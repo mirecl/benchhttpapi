@@ -1,0 +1,22 @@
+version: "2.2"
+
+services:
+    rust:
+        image: rust
+        container_name: rust
+        cpus: 2
+        build:
+            dockerfile: Dockerfile
+            context: rust
+        ports:
+            - 8080:8080
+        
+    golang:
+        image: golang
+        container_name: golang
+        cpus: 2
+        build:
+            dockerfile: Dockerfile
+            context: golang
+        ports:
+            - 8081:8081

@@ -1,0 +1,21 @@
+[package]
+name = "round"
+version = "0.1.0"
+authors = ["mirecl <grazhdankov@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+chrono = "0.4"
+actix-web = "3.3"
+validator = { version = "0.12", features = ["derive"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+
+[profile.release]
+opt-level = 3
+codegen-units = 1
+lto = true
+
+[profile.release.package.'*']
+opt-level = 3
+codegen-units = 1

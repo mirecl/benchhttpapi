@@ -1,0 +1,5 @@
+/rust/target/*
+/venv
+.DS_Store
+*.pyc
+*.ipynb
