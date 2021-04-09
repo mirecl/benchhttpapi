@@ -16,7 +16,7 @@ struct Request {
     amount: f64,
     #[validate(range(min = 1, max = 60, message = "Bad period"))]
     periods: i32,
-    #[validate(length(equal = 10), custom = "validate_udate")]
+    #[validate(length(equal = 10), custom = "validate_date")]
     date: String,
 }
 
@@ -98,7 +98,7 @@ impl ResponseError for Error {
     }
 }
 
-fn validate_udate(date: &str) -> Result<(), ValidationError> {
+fn validate_date(date: &str) -> Result<(), ValidationError> {
     if let Err(_) = NaiveDate::parse_from_str(date, "%d.%m.%Y") {
         return Err(ValidationError::new("bad date"));
     }
