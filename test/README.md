@@ -1,5 +1,5 @@
 File: **cases.pkl**\
-Count cases: **434 070**
+Count cases: **50 778**
 
 How to load cases in python:
 ```python
