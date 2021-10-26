@@ -4,8 +4,10 @@ from functools import partial
 import zlib
 import pickle
 import json
+import inquirer
+import os
 
-URL = "http://localhost:8081/deposit"
+URL = "http://localhost:5000/credit"
 
 
 @pytest.fixture(scope="session")
@@ -14,10 +16,28 @@ def client():
 
 
 def pytest_generate_tests(metafunc):
+    questions = [
+        inquirer.List(
+            "case",
+            message="Укажите набор тест-кейсов:",
+            choices=sorted(
+                [
+                    row.split(".")[0]
+                    for row in filter(
+                        lambda x: x.endswith(".pkl"), os.listdir("test/cases")
+                    )
+                ],
+                reverse=True,
+            ),
+        ),
+    ]
+    answers = inquirer.prompt(questions)
+    print(f"Подождите, идет загрузка {answers['case']}...\n")
+
     if "data_request" not in metafunc.fixturenames:
         return
 
-    with open("test/cases.pkl", "rb") as f:
+    with open(f"test/cases/{answers['case']}.pkl", "rb") as f:
         tmp = pickle.load(f)
 
     test_cases = json.loads(zlib.decompress(tmp))

@@ -22,6 +22,6 @@ def test_service(data_request, data_response, client):
         current_response["sum_e"] = round(res[current_response["date"][-1]])
 
         assert current_response["date"] == data_response["date"]
-        assert 0 <= abs(current_response["sum"] - data_response["sum"]) < 0.5
-        assert 0 <= abs(current_response["sum_s"] - data_response["sum_s"]) < 0.5
-        assert 0 <= abs(current_response["sum_e"] - data_response["sum_e"]) < 0.5
+        assert 0 <= abs(current_response["sum"] - data_response["sum"]) <= 20
+        assert 0 <= abs(current_response["sum_s"] - data_response["sum_s"]) <= 2
+        assert 0 <= abs(current_response["sum_e"] - data_response["sum_e"]) <= 2
