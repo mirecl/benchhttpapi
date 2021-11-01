@@ -7,7 +7,7 @@ import json
 import inquirer
 import os
 
-URL = "http://localhost:5000/credit"
+URL = "http://127.0.0.1:8000/deposit"
 
 
 @pytest.fixture(scope="session")

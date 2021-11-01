@@ -5,6 +5,10 @@ def test_service(data_request, data_response, client):
     resp = client(json=data_request)
     assert resp.status_code == data_response["code"]
 
+    if resp.status_code == 400:
+        res = resp.json()
+        assert res["error"] != None
+
     if resp.status_code == 200:
         current_response = {
             "date": None,
