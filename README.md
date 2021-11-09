@@ -21,7 +21,7 @@ pip install pep8-naming
 pip install flake8-docstrings
 pip install flake8-pytest 
 pip install flake8-annotations 
-pip install  flake8-black
+pip install flake8-black
 pip install flake8-variables-names
 ```
 + pylint
